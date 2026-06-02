@@ -1,0 +1,44 @@
+import jwt, { decode } from "jsonwebtoken";
+import User from "../models/User.js";
+
+export const protect = async (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
+    console.log(authHeader);
+
+    if (!authHeader) {
+      return res.status(400).json({
+        message: " No token found",
+      });
+    }
+
+    if (!authHeader.startsWith("Bearer")) {
+      return res.status(401).json({
+        message: "Invalid token format",
+      });
+    }
+
+    const token = authHeader.split(" ")[1];
+    console.log(token);
+
+    const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+
+    const user = await User.findById(decoded.id);
+
+    if (!user) {
+      return res.status(401).json({
+        message: "User not found",
+      });
+    }
+
+    req.user = user;
+
+    next();
+  } catch (error) {
+    console.log(error);
+    res.status(401).json({
+      success: false,
+      message: "Token invalid or expired",
+    });
+  }
+};
