@@ -4,19 +4,11 @@ A simple full-stack Student Management application built using the MERN stack (M
 
 The application allows users to register, authenticate using JWT, and perform CRUD operations on student records through a secure REST API.
 
-> **Note:** A fully Dockerized version of this project is available in the `docker-setup` branch.
-
 ---
 
 ## 🎯 Project Purpose
 
-In addition to MERN development, this project is also being used as a foundation for learning:
-
-- Docker
-- Docker Compose
-- CI/CD Pipelines
-- GitHub Actions
-- Cloud Deployment
+This project is a simple MERN application that serves as a foundation for learning Docker, Docker Compose, CI/CD, GitHub Actions, and cloud deployment concepts.
 
 A Dockerized version of this application is available in the **docker-setup** branch.
 
