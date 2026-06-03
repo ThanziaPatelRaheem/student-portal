@@ -143,7 +143,7 @@ JWT_EXPIRES=7d
 ### Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone
 cd student-portal-v1
 ```
 
