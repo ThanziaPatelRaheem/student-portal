@@ -9,6 +9,8 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   async function submitHandler(e) {
     e.preventDefault();
     try {
@@ -17,7 +19,9 @@ const Login = () => {
         password,
       };
 
-      const res = await fetch(`http://localhost:3000/api/v1/auth/login`, {
+      console.log("API_URL", API_URL);
+
+      const res = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
