@@ -7,7 +7,7 @@ const Home = () => {
     <>
       <div>
         <h1>Welcome to Student Portal</h1>
-        <p className="text-line">Manage students securely internally</p>
+        <p className="text-line">Manage students securely</p>
       </div>
     </>
   );
