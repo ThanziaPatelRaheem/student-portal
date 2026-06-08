@@ -10,7 +10,7 @@ This project demonstrates how a full-stack MERN application can be containerized
 
 ## Project Purpose
 
-The primary goal of this project wasmto gain hands-on experience with modern deployment and DevOps practices.
+The primary goal of this project was to gain hands-on experience with modern deployment and DevOps practices.
 
 This project was used as a practical environment to learn:
 
