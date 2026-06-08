@@ -308,7 +308,6 @@ Updated Application
 - HTTPS with SSL
 - Automated Testing
 - Monitoring & Logging
-- Role-Based Authorization
 
 ---
 
