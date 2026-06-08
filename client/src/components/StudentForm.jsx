@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const StudentForm = () => {
   const [name, setName] = useState("");
@@ -10,9 +9,8 @@ const StudentForm = () => {
   const [studentEditId, setStudentEditId] = useState(null);
 
   const token = localStorage.getItem("token");
-  const navigate = useNavigate();
 
-  console.log(students);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -24,17 +22,14 @@ const StudentForm = () => {
           course,
         };
 
-        const res = await fetch(
-          `http://localhost:3000/api/v1/students/${studentEditId}`,
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(studentData),
+        const res = await fetch(`${API_URL}/students/${studentEditId}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
-        );
+          body: JSON.stringify(studentData),
+        });
 
         const data = await res.json();
         if (!res.ok) {
@@ -52,7 +47,7 @@ const StudentForm = () => {
           name,
           course,
         };
-        const res = await fetch(`http://localhost:3000/api/v1/students`, {
+        const res = await fetch(`${API_URL}/students`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -66,7 +61,6 @@ const StudentForm = () => {
         }
 
         const data = await res.json();
-        console.log(data);
 
         setStudents((prev) => [...prev, data.student]);
       }
@@ -81,7 +75,7 @@ const StudentForm = () => {
   useEffect(() => {
     async function getAllStudents() {
       try {
-        const res = await fetch("http://localhost:3000/api/v1/students", {
+        const res = await fetch(`${API_URL}/students`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -92,7 +86,7 @@ const StudentForm = () => {
           throw new Error("Failed to fetch students");
         }
         const data = await res.json();
-        console.log(data);
+
         setStudents(data.allStudent);
       } catch (error) {
         console.log(error);
@@ -103,7 +97,7 @@ const StudentForm = () => {
 
   async function deleteHandler(id) {
     try {
-      const res = await fetch(`http://localhost:3000/api/v1/students/${id}`, {
+      const res = await fetch(`${API_URL}/students/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -115,7 +109,6 @@ const StudentForm = () => {
         throw new Error("Student was not found");
       }
       const data = await res.json();
-      console.log(data);
 
       const removeStudent = students.filter((student) => student._id !== id);
       setStudents(removeStudent);

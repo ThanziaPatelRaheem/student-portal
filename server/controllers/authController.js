@@ -49,7 +49,6 @@ export const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-    // console.log(user);
 
     if (!user) {
       return res.status(400).json({
@@ -64,8 +63,6 @@ export const loginUser = async (req, res) => {
         message: "Invalid credentails!",
       });
     }
-
-    // console.log(process.env.JWT_SECRET);
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPIRES,

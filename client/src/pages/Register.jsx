@@ -10,6 +10,8 @@ const Register = () => {
 
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   async function submitHandler(e) {
     e.preventDefault();
     try {
@@ -18,7 +20,8 @@ const Register = () => {
         email,
         password,
       };
-      const res = await fetch(`http://localhost:3000/api/v1/auth/register`, {
+
+      const res = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,11 +29,11 @@ const Register = () => {
         body: JSON.stringify(userRegiterData),
       });
 
+      const data = await res.json();
+
       if (!res.ok) {
         throw new Error(data.message || "Could not register user");
       }
-
-      const data = await res.json();
 
       setSuccess(data.message);
       navigate("/login");
@@ -38,10 +41,10 @@ const Register = () => {
       setName("");
       setEmail("");
       setPassword("");
-
-      console.log(data);
     } catch (error) {
       console.log(error);
+      setError(error.message);
+      setSuccess("");
     }
   }
 

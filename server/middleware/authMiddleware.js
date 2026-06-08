@@ -4,7 +4,6 @@ import User from "../models/User.js";
 export const protect = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
-    console.log(authHeader);
 
     if (!authHeader) {
       return res.status(400).json({
@@ -19,7 +18,6 @@ export const protect = async (req, res, next) => {
     }
 
     const token = authHeader.split(" ")[1];
-    console.log(token);
 
     const decoded = await jwt.verify(token, process.env.JWT_SECRET);
 
