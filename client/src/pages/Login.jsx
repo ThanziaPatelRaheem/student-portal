@@ -19,8 +19,6 @@ const Login = () => {
         password,
       };
 
-      console.log("API_URL", API_URL);
-
       const res = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: {
@@ -37,7 +35,6 @@ const Login = () => {
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-      console.log(data);
 
       navigate("/students");
       setSuccess(data.message);

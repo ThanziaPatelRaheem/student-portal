@@ -21,7 +21,6 @@ const Register = () => {
         password,
       };
 
-      console.log("API_URL)", API_URL);
       const res = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
         headers: {
@@ -42,8 +41,6 @@ const Register = () => {
       setName("");
       setEmail("");
       setPassword("");
-
-      console.log(data);
     } catch (error) {
       console.log(error);
       setError(error.message);

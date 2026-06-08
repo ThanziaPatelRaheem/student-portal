@@ -12,8 +12,6 @@ const StudentForm = () => {
 
   const API_URL = import.meta.env.VITE_API_URL;
 
-  console.log(students);
-
   async function submitHandler(e) {
     e.preventDefault();
 
@@ -63,7 +61,6 @@ const StudentForm = () => {
         }
 
         const data = await res.json();
-        console.log(data);
 
         setStudents((prev) => [...prev, data.student]);
       }
@@ -89,7 +86,7 @@ const StudentForm = () => {
           throw new Error("Failed to fetch students");
         }
         const data = await res.json();
-        console.log(data);
+
         setStudents(data.allStudent);
       } catch (error) {
         console.log(error);
@@ -112,7 +109,6 @@ const StudentForm = () => {
         throw new Error("Student was not found");
       }
       const data = await res.json();
-      console.log(data);
 
       const removeStudent = students.filter((student) => student._id !== id);
       setStudents(removeStudent);
