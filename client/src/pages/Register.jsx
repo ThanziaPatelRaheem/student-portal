@@ -12,9 +12,6 @@ const Register = () => {
 
   const API_URL = import.meta.env.VITE_API_URL;
 
-  console.log("REgister env", import.meta.env);
-  console.log("register api_url", import.meta.env.VITE_API_URL);
-
   async function submitHandler(e) {
     e.preventDefault();
     try {
