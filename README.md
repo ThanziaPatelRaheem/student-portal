@@ -1,4 +1,4 @@
-# Student Portal - Dockerized MERN Deployment Project
+# Student Portal - Dockerized MERN Application with AWS EC2 & GitHub Actions CI/CD
 
 Student Portal is a MERN-based student management system that allows admins to register, authenticate, and manage student records through a secure JWT-protected API.
 
